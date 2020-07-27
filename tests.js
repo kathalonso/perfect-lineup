@@ -1,8 +1,7 @@
 const expect = require('chai').expect
-const { describe, it } = require('mocha')
 const validateLineup = require('./index')
 
-describe('validateLineup', () => {
+describe('validateLineup', () => {                                                    // 1
   it('returns true when the lineup satisfies all conditions', () => {
     const lineup = [{
       id: 1, name: 'Chris Sale', position: 'P', teamId: 12, gameId: 123, salary: 9500
@@ -27,7 +26,7 @@ describe('validateLineup', () => {
     expect(validateLineup(lineup)).to.equal(true)
   })
 
-  it('returns false when the lineup includes too many players from a single team', () => {
+  it('returns false when the lineup includes too many players from a single team', () => {    // 2
     const lineup = [{
       id: 1, name: 'Chris Sale', position: 'P', teamId: 12, gameId: 123, salary: 9500
     }, {
@@ -51,7 +50,7 @@ describe('validateLineup', () => {
     expect(validateLineup(lineup)).to.equal(false)
   })
 
-  it('returns false when the lineup includes too many players from a single game', () => {
+  it('returns false when the lineup includes too many players from a single game', () => {    // 3
     const lineup = [{
       id: 1, name: 'Chris Sale', position: 'P', teamId: 12, gameId: 123, salary: 9500
     }, {
@@ -75,7 +74,7 @@ describe('validateLineup', () => {
     expect(validateLineup(lineup)).to.equal(false)
   })
 
-  it('returns false when the lineup includes too many players', () => {
+  it('returns false when the lineup includes too many players', () => {                 // 4
     const lineup = [{
       id: 1, name: 'Chris Sale', position: 'P', teamId: 12, gameId: 123, salary: 9500
     }, {
@@ -102,7 +101,7 @@ describe('validateLineup', () => {
   })
 
   it('returns false when the lineup does not have the right number of players at each position', () => {
-    const lineup = [{
+    const lineup = [{                                                                     //5
       id: 1, name: 'Chris Sale', position: 'P', teamId: 12, gameId: 123, salary: 9500
     }, {
       id: 2, name: 'Yadier Molina', position: 'C', teamId: 22, gameId: 115, salary: 2500
@@ -125,7 +124,7 @@ describe('validateLineup', () => {
     expect(validateLineup(lineup)).to.equal(false)
   })
 
-  it('returns false when the lineup includes too few players from a single position', () => {
+  it('returns false when the lineup includes too few players from a single position', () => {   // 6
     const lineup = [{
       id: 1, name: 'Chris Sale', position: 'P', teamId: 12, gameId: 123, salary: 9500
     }, {
@@ -147,7 +146,7 @@ describe('validateLineup', () => {
     expect(validateLineup(lineup)).to.equal(false)
   })
 
-  it('returns false when the lineup does not include a player from a position', () => {
+  it('returns false when the lineup does not include a player from a position', () => {     //7
     const lineup = [{
       id: 1, name: 'Luke Voit', position: '1B', teamId: 20, gameId: 115, salary: 2800
     }, {
@@ -169,7 +168,7 @@ describe('validateLineup', () => {
     expect(validateLineup(lineup)).to.equal(false)
   })
 
-  it('returns false when the lineup has a total salary greater than 45000', () => {
+  it('returns false when the lineup has a total salary greater than 45000', () => {       //8
     const lineup = [{
       id: 1, name: 'Chris Sale', position: 'P', teamId: 12, gameId: 123, salary: 10800
     }, {
